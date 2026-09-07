@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog as fd
+
 root = Tk()
 root.title('Translator')
 root.resizable(False, False)
