@@ -5,7 +5,7 @@ model = AutoModelForSeq2SeqLM.from_pretrained("facebook/nllb-200-distilled-600M"
 
 tokenizer.src_lang = "eng_Latn"
 
-
+print("Ucitan AI")
 
 def prijevod(tekst):
     inputs = tokenizer(tekst, return_tensors="pt")
@@ -15,4 +15,4 @@ def prijevod(tekst):
     )
 
     result = tokenizer.batch_decode(translated_tokens, skip_special_tokens=True)
-    return result
+    return result[0]

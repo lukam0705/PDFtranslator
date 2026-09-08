@@ -1,12 +1,15 @@
 import pymupdf
 from localLLM import prijevod
+from pdf_maker import ZatvoriPDF, napraviStranicu, stvoriPDF
 
 def uzmi_tekst(file):
 
     doc = pymupdf.open(file)
+   
 
     def podijeli_tekst(tekst, duljina_bloka=300):
         blokovi = []
+        
         pocetak = 0
 
         while pocetak < len(tekst):
@@ -23,11 +26,15 @@ def uzmi_tekst(file):
 
         return blokovi
 
-
+    stvoriPDF()
     for page in doc:
+        prevedeni_blokovi = []
         tekst_stranice = page.get_text()
         blokovi = podijeli_tekst(tekst_stranice)
         for blok in blokovi:
             if not blok.strip():
                 continue
-            print(prijevod(blok))
+            prevedeni_blokovi.append(prijevod(blok))
+        napraviStranicu(prevedeni_blokovi)
+    
+    ZatvoriPDF()

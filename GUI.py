@@ -29,8 +29,8 @@ open_button = ttk.Button(
 def submited_file():
     try:
         uzmi_tekst(filename)
-    except:
-        print("No Files Selected!")
+    except Exception as e:
+        print("Greška:", e)
 
 send_file = ttk.Button(root,text='Pošalji',command=submited_file)
 
