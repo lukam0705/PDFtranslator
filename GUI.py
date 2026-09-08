@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog as fd
+from txt_extractor import uzmi_tekst
 root = Tk()
 root.title('Translator')
 root.resizable(False, False)
@@ -27,14 +28,11 @@ open_button = ttk.Button(
 
 def submited_file():
     try:
-        print(filename)
+        uzmi_tekst(filename)
     except:
         print("No Files Selected!")
 
 send_file = ttk.Button(root,text='Pošalji',command=submited_file)
-
-
-
 
 open_button.pack(expand=True)
 send_file.pack(expand=True)
